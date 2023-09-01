@@ -17,7 +17,7 @@ namespace API.Hubs
         {
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, roomName);
 
-            await Clients.Group(roomName).SendLeave(new ChatMessage { User = "System", Message = $"{playerName} has joined" });
+            await Clients.Group(roomName).SendLeave(new ChatMessage { User = "System", Message = $"{playerName} has left" });
         }
 
         public async Task SendMessage(string roomName, ChatMessage message)

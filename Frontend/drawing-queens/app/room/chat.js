@@ -8,6 +8,7 @@ export default function Chat(props) {
     const [ connection, setConnection ] = useState(null);
     const [ chat, setChat ] = useState([]);
     const latestChat = useRef(null);
+    const roomName = "TestRoom";
 
     latestChat.current = chat;
 
@@ -28,8 +29,8 @@ export default function Chat(props) {
             connection.start()
                 .then(result => {
                     console.log('Connected!');
-
-                    connection.invoke('AddToRoom', props.roomName, props.playerName);
+                    
+                    connection.invoke('AddToRoom', roomName, "Lars");
     
                     connection.on('SendJoin', message => {
                         const updatedChat = [...latestChat.current];
@@ -57,7 +58,7 @@ export default function Chat(props) {
 
         if (connection._connectionStarted) {
             try {
-                await connection.send('SendMessage', chatMessage);
+                await connection.invoke('SendMessage', roomName, chatMessage);
             }
             catch(e) {
                 console.log(e);
