@@ -1,6 +1,8 @@
 import styles from "../styles/Index.module.scss";
-import Link from "next/link";
+
+// import Link from "next/link";
 // import { name } from './../.next/server/app/page';
+
 export default function Page() {
   return (
     <>
@@ -10,7 +12,7 @@ export default function Page() {
 
           {/* <Link href="/room">Gå til et rum</Link> */}
 
-          <form action="/room" method="post">
+          <form action="/rooms" method="post">
             <input type="text" name="name" placeholder="Navn" />
 
             <div className={styles.color}>
