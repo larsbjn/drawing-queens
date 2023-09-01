@@ -1,11 +1,13 @@
+"use client";
 import styles from '../../styles/Player.module.scss'
-import styles1 from '../../styles/Index.module.scss'
-import Player from './player'
+import Chat from './chat';
 
-export default function Page() {
+export default function Page(props) {
+    // check if props is null
+    const roomName = props.roomName;
+    const playerName = props.playerName;
     return <>
-        <h1 className={styles1['title']}>Hello, room!</h1>
-        <Player name="Lars" />
-        <Player name="Camilla" />
+        <h1>Room: {roomName}</h1>
+        <h1>Player: {playerName}</h1>
     </>
 }
